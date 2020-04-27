@@ -2,6 +2,7 @@
 #################### LIB LOCATION ############################
 GOOGLE_TEST_LIB = gtest
 GOOGLE_TEST_INCLUDE = /usr/include/gtest
+LIB_GLUT_LINUX = -lGL -lGLU -lglut
 
 ###################### OPTIONS ###############################
 TARGET = proj
@@ -17,7 +18,7 @@ CXX = g++
 DEBUG = -g -Wall
 CXX_FLAGS = -c $(DEBUG) -std=c++11 -I $(INC_DIR)
 CXX_FLAGS_T = $(CXX_FLAGS) -I $(GOOGLE_TEST_INCLUDE)
-LD_FLAGS =
+LD_FLAGS = $(LIB_GLUT_LINUX)
 #LD_FLAGS_T = $(LD_FLAGS) -l $(GOOGLE_TEST_LIB) -l pthread
 LD_FLAGS_T = $(LD_FLAGS)-L /usr/local/lib -l $(GOOGLE_TEST_LIB) -l pthread
 
@@ -35,11 +36,14 @@ BIN_T = $(addprefix $(BIN_DIR)/, $(TARGET_T))
 
 ######################## RULES ###############################
 # entry point
-default: help proj 
+default: proj 
+	@echo "Build Default command :"
+	@echo "    make proj "
+	@echo "  List off avaible commande"
+	@echo "      make help"
 help:
-	@echo "Call Default command :"
-	@echo "    \$make proj "
-	@echo "  Other command available:"
+	@echo "List off avaible commande"
+	@echo "    make proj "
 	@echo "    make test"
 	@echo "    make clean"
 	@echo "    make help"

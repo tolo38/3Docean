@@ -1,10 +1,9 @@
 
 #include <gtest/gtest.h>
-#include "obj.hpp"
+#include "Window.hpp"
 
 TEST(obj, dist)
 {
-	obj1 o;
-	o.disp1();
+    Window::launch();
 	EXPECT_EQ(1,1);
 }
